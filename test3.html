@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="lib/base.css" />
+    <link rel="stylesheet" type="text/css" href="lib/extjs/resources/css/ext-all.css">
+    <script type="text/javascript" src="lib/extjs/ext-all.js"></script>
+    <style>
+    .wrapper{border: 1px solid; width: 1000px; margin: 0 auto;}
+    </style>
+  </head>
+
+  <body>
+
+    <div class="wrapper" id="J_wrapper">
+      
+    </div>
+  
+<script>
+Ext.define('Post', {
+  extend: 'Ext.data.Model',
+  idProperty: 'post_id',
+  fields: [
+      {name: 'postId', mapping: 'post_id'},
+      {name: 'title', mapping: 'topic_title'},
+      {name: 'topicId', mapping: 'topic_id'},
+      {name: 'author', mapping: 'author'},
+      {name: 'lastPost', mapping: 'post_time', type: 'date', dateFormat: 'timestamp'},
+      {name: 'excerpt', mapping: 'post_text'}
+  ]
+});
+Ext.onReady(function(){
+  //jsonp model
+  /*var forumId = 4;
+  var store = Ext.create('Ext.data.Store', {
+      model: 'Post',
+      proxy: {
+          type: 'jsonp',
+          url: 'http://sencha.com/forum/topics-remote.php',
+          extraParams: {
+              forumId: forumId
+          },
+          reader: {
+              type: 'json',
+              root: 'topics',
+              totalProperty: 'totalCount'
+          }
+      },
+      listeners: {
+          beforeload: function(){
+              var params = store.getProxy().extraParams;
+              if (params.query) {
+                  delete params.forumId;
+              } else {
+                  params.forumId = forumId;
+              }
+          },
+      }
+  });
+  store.loadPage(1);
+  //data
+  userForm.loadRecord(Post);
+  */
+
+  
+  //view
+  var userForm = Ext.create('Ext.form.Panel', {
+    renderTo: Ext.get("J_wrapper"),
+    title: 'User Form',
+    height: 130,
+    width: 280,
+    bodyPadding: 10,
+    defaultType: 'textfield',
+    items: [
+        {
+            fieldLabel: 'aa',
+            name: 'firstName'
+        },
+        {
+            fieldLabel: 'bb',
+            name: 'lastName'
+        }
+    ]
+  });
+
+  
+
+  //model
+  Ext.define('User', {
+    extend: 'Ext.data.Model',
+    fields: ['firstName', 'lastName'],
+    proxy: {
+        type: 'ajax',
+        api: {
+            read: 'a1.php',
+            update: 'data/update_user'
+        },
+        extraParams: {
+          a1: 'c'
+        },
+        reader: {
+            type: 'json',
+            root: 'users'
+        }
+    }
+});
+
+  //bind data
+  Ext.ModelMgr.getModel('User').load(1, { // load user with ID of "1"
+    success: function(user) {
+        userForm.loadRecord(user); // when user is loaded successfully, load the data into the form
+    }
+  });
+
+});
+</script>
+
+
+  </body>
+</html>

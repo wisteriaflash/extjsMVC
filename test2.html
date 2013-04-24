@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test ExtJS</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="lib/extjs/resources/css/ext-all.css">
+	<script type="text/javascript" src="lib/extjs/ext-all.js"></script>
+	<style type="text/css">
+		.wrapper{width: 1000px; margin: 0 auto;}
+		/* set mask */
+		.x-mask{background-color: #000;}
+	</style>
+</head>
+<body>
+	<h1></h1>
+	<div class="wrapper">
+		<div class="con testaa" id="form"></div>
+		<div id="J_select" class="testaa">
+			<input type="text" id="J_text1" />
+		</div>
+	</div>
+
+<div>
+	<a href=""></a>
+</div>
+
+
+
+
+<script type="text/javascript">
+Ext.onReady(function(){
+	// alert("tt");
+	var form = new Ext.form.FormPanel({
+		labelAlign: 'right',
+		labelWidth: 250,
+		width: 500
+	});
+	var tf1 = form.add(new Ext.form.TextField({
+		fieldLable: '不能为空',
+		allowBlank: false,
+		emptyText: '请输入值',
+		componentCls: 'tf11',
+		fieldCls: 'tf22'
+	}));
+
+	//render
+	form.render("form");
+	// console.log(tf1);
+	// console.log(form.items);
+
+	//selector
+	var sl = Ext.select("#J_select");
+	// sl = Ext.get("J_select");
+	sl = Ext.select(".testaa");
+	console.log(sl);
+
+	var testInput = Ext.get("J_text1");
+
+	//load mask
+	var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
+	//myMask.show();
+	setTimeout(function(){
+		myMask.hide();
+	}, 3000);
+});
+
+//panel
+// Ext.application({
+// 	name: 'HelloExt',
+// 	launch: function(){
+// 		Ext.create('Ext.container.Viewport',{
+// 			layout: 'fit',
+// 			items: [
+// 					{
+// 						title: 'Hello Ext',
+// 						html: 'Hello! Welcome to Ext JS.'
+// 					}
+// 			]
+// 		});
+// 	}
+// });
+</script>
+</body>
+</html>
