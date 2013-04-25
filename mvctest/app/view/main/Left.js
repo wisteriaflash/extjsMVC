@@ -18,7 +18,7 @@ Ext.define('app.view.main.Left', {
     dataDefault: [{
         itemId: 'index'
     },{
-        itemId: 'users', children: [{itemId:'users_list'}],
+        itemId: 'users', children: [{itemId:'users_list'}]
     },{
         itemId: 'other', children: [{itemId: 'other1'},{itemId: 'other2'},{itemId: 'other3'}]
     }],

@@ -36,7 +36,7 @@ Ext.application({
     routes: {
         '/'             : 'home#index',
         'users'         : 'users#list',
-        'users/:id/edit': 'users#edit',
+        'users/:id/edit': 'users#edit'
         // 'settings'      : 'settings#index',
         // 'users'         : 'users#list',
         // 'users/:id/edit': 'users#edit'

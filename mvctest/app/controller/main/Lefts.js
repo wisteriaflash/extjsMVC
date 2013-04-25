@@ -24,7 +24,7 @@ Ext.define('app.controller.main.Lefts',{
         this.control({
             'treepanel': {
                 afterrender: this.treeAfterRender,
-                itemdblclick: this.treeFunction
+                itemclick: this.treeFunction
             }
         });
     },
