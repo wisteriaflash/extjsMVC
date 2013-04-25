@@ -8,7 +8,7 @@ Ext.Loader.setConfig({
           mvctest:'app'
      }
 });
-
+delete Ext.tip.Tip.prototype.minWidth;  //chrome fix tip宽度bug
 
 //application
 Ext.application({
