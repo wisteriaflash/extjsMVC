@@ -24,12 +24,10 @@ Ext.define('app.controller.Users',{
     init: function(){
        this.control({
             'userlist': {
-                itemdblclick: this.editUser,
-                afterrender: this.listAfterRender
+                itemdblclick: this.editUser
             },
             'useredit': {
                 close: this.editClose
-                // afterrender: this.onEditAfterRender
             },
             'useredit button[action=save]': {
                 click: this.updateUser
@@ -71,10 +69,6 @@ Ext.define('app.controller.Users',{
     },
     editClose: function(){
         Ext.ux.Router.redirect('users');
-    },
-    listAfterRender: function(){
-        var userList = this.getUserList();
-
     },
     updateUser : function(button){
         var win = button.up('window');
