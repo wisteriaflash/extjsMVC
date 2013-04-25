@@ -44,6 +44,7 @@ Ext.define('app.view.main.Left', {
                     rootVisible: false,
                     autoScroll: true,
                     border: false,
+                    bodyBorder: false,
                     // useArrows: true,
                     // frame: true,
                     width: 400,

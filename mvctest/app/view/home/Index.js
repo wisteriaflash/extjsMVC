@@ -23,6 +23,7 @@ Ext.define('app.view.home.Index', {
                         xtype : 'datetimefield',
                         format : 'Y-m-d H:i:s',
                         width: 200
+                        // editable: true
                     }
                 ]
             });
