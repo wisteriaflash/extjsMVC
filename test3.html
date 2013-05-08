@@ -6,113 +6,99 @@
     <link rel="stylesheet" type="text/css" href="lib/extjs/resources/css/ext-all.css">
     <script type="text/javascript" src="lib/extjs/ext-all.js"></script>
     <style>
-    .wrapper{border: 1px solid; width: 1000px; margin: 0 auto;}
+    .t1 .x-panel-header-text-container-default{
+      color: red;
+    }
     </style>
   </head>
 
   <body>
 
-    <div class="wrapper" id="J_wrapper">
+    <div class="wrapper" id="myid">
       
     </div>
   
 <script>
-Ext.define('Post', {
-  extend: 'Ext.data.Model',
-  idProperty: 'post_id',
-  fields: [
-      {name: 'postId', mapping: 'post_id'},
-      {name: 'title', mapping: 'topic_title'},
-      {name: 'topicId', mapping: 'topic_id'},
-      {name: 'author', mapping: 'author'},
-      {name: 'lastPost', mapping: 'post_time', type: 'date', dateFormat: 'timestamp'},
-      {name: 'excerpt', mapping: 'post_text'}
-  ]
-});
-Ext.onReady(function(){
-  //jsonp model
-  /*var forumId = 4;
-  var store = Ext.create('Ext.data.Store', {
-      model: 'Post',
-      proxy: {
-          type: 'jsonp',
-          url: 'http://sencha.com/forum/topics-remote.php',
-          extraParams: {
-              forumId: forumId
-          },
-          reader: {
-              type: 'json',
-              root: 'topics',
-              totalProperty: 'totalCount'
-          }
-      },
-      listeners: {
-          beforeload: function(){
-              var params = store.getProxy().extraParams;
-              if (params.query) {
-                  delete params.forumId;
-              } else {
-                  params.forumId = forumId;
-              }
-          },
+Ext.create('Ext.tab.Panel', {
+    width: 400,
+    height: 400,
+    // renderTo: document.body,
+    items: [{
+        title: 'Foo',
+        id: 'foo',
+        html: 'a11111111'
+    }, {
+        title: 'Bar',
+        id: 'bar',
+        tabConfig: {
+            title: 'Custom Title',
+            tooltip: 'A button tooltip'
+        },
+        items: [{
+          xtype: 'panel',
+          title: 'panel22222',
+          border: false,
+          html: 'i am panel 2'
+        }]
+    }],
+    listeners: {
+      tabchange: function(tp, p){
+        var len = p.items.length;
+        // console.log(p.id);
+        
+        if(len>0){
+          return;
+        }
+        //init component
+        switch(p.id){
+          // case 'foo': initFoo(); break;
+          // case 'bar': initBar(); break;
+        }
+        var panle = Ext.create('Ext.panel.Panel',{
+          title: 'panel11111',
+          html: '11111111'
+        });
+        p.add(panle);
       }
-  });
-  store.loadPage(1);
-  //data
-  userForm.loadRecord(Post);
-  */
-
-  
-  //view
-  var userForm = Ext.create('Ext.form.Panel', {
-    renderTo: Ext.get("J_wrapper"),
-    title: 'User Form',
-    height: 130,
-    width: 280,
-    bodyPadding: 10,
-    defaultType: 'textfield',
-    items: [
-        {
-            fieldLabel: 'aa',
-            name: 'firstName'
-        },
-        {
-            fieldLabel: 'bb',
-            name: 'lastName'
-        }
-    ]
-  });
-
-  
-
-  //model
-  Ext.define('User', {
-    extend: 'Ext.data.Model',
-    fields: ['firstName', 'lastName'],
-    proxy: {
-        type: 'ajax',
-        api: {
-            read: 'a1.php',
-            update: 'data/update_user'
-        },
-        extraParams: {
-          a1: 'c'
-        },
-        reader: {
-            type: 'json',
-            root: 'users'
-        }
     }
 });
 
-  //bind data
-  Ext.ModelMgr.getModel('User').load(1, { // load user with ID of "1"
-    success: function(user) {
-        userForm.loadRecord(user); // when user is loaded successfully, load the data into the form
-    }
-  });
 
+
+
+//t2
+new Ext.Component({
+    constrain: true,
+    floating: true,
+    style: {
+        backgroundColor: '#fff',
+        border: '1px solid black'
+    },
+    html: '<h1 style="cursor:move">The title</h1><p>The content</p>',
+    draggable: {
+        delegate: 'h1'
+    }
+}).show();
+
+//t3
+Ext.create('Ext.panel.Panel', {
+  title: 'my panel',
+  renderTo: document.body,
+  width:500,
+  height: 200,
+  border: false,
+  bodyBorder: false,
+  // header:
+  header: {
+    baseCls: 't1',
+    style: {
+      background: 'none',
+      fontWeight: 'normal',
+      color: 'red'
+    }
+  }
 });
+
 </script>
 
 

@@ -83,6 +83,9 @@
 .icon-save {
   background-image: url(/Images/Layout/save.png) !important;
 }
+.icon-save-disabled {
+  background-image: url(/Images/Layout/save-disable.png) !important;
+}
 .icon-reset{
   background-image:url(/Images/Layout/reset.png) !important;
 }

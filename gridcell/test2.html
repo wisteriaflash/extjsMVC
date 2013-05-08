@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>Rowspan (行合并)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../lib/extjs/resources/css/ext-all.css" />
+<script type="text/javascript" src="../lib/extjs/ext-all.js"></script>    <link rel="stylesheet" type="text/css" href="rowspan.css"/>
+    <!--<script type="text/javascript" src="RowspanView.js"></script>--> 
+    <script type="text/javascript">
+    Ext.Loader.setConfig({
+         enabled:true,
+
+         paths:{
+              Ext:'../lib/extjs/src',
+              'Ext.ux': '../lib/ExtJS.ux',
+              mvctest:'app'
+         }
+    });
+    <!--
+        Ext.onReady(function() {
+         var myData = [
+                ['供电所1',6090,'大工业用电户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                ['供电所1',6090,'非普工业用电户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                ['供电所1',6090,'商业用电户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                ['供电所1',6090,'住宅用电户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                ['供电所1',6090,'售户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                
+                ['供电所1',6090,'城区用户数',0,'专用线',0,100,100,'专用变',51,100,100],
+                ['供电所1',6090,'非城区用户数',0,'专用线',0,100,100,'专用变',51,100,100],
+                ['供电所1',6090,'低压用户数',41,'专用线',0,100,100,'专用变',51,100,100],
+                ['供电所1',6090,'未完成一户一表改造户数',0,'专用线',0,100,100,'专用变',51,100,100],
+                
+                ['供电所2',6090,'大工业用电户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                ['供电所2',6090,'非普工业用电户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                ['供电所2',6090,'商业用电户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                ['供电所2',6090,'住宅用电户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                ['供电所2',6090,'售户数',15,'公用线',5,100,100,'公用变',57,100,100],
+                
+                ['供电所2',6090,'城区用户数',0,'专用线',0,100,100,'专用变',51,100,100],
+                ['供电所2',6090,'非城区用户数',0,'专用线',0,100,100,'专用变',51,100,100],
+                ['供电所2',6090,'低压用户数',41,'专用线',0,100,100,'专用变',51,100,100],
+                ['供电所2',6090,'未完成一户一表改造户数',0,'专用线',0,100,100,'专用变',51,100,100]
+               ];
+               // create the data store
+            var store = new Ext.data.ArrayStore({
+                fields: [
+                   {name: 'pass_name'},
+                   {name: 'user_num'},
+                   {name: 'user_name' },
+                   {name: 'user_count'},
+                   {name: 'dedicated_line' },
+                   {name: 'dedicated_num'},
+                   {name: 'colnum7'},
+                   {name: 'colnum8'},
+                   {name: 'colnum9'},
+                   {name: 'colnum10'},
+                   {name: 'colnum11'},
+                   {name: 'colnum12'}
+                ]
+            });            // manually load local data
+            store.loadData(myData);            // create the Grid
+            var grid = new Ext.grid.EditorGridPanel({
+                region:'center',
+                store: store,
+                columns: [
+                  {id:'pass_name', header: 'pass_name', width: 75,dataIndex: 'pass_name', rowspan: ['pass_name']},
+                    {header: 'user_num', width: 75,dataIndex: 'user_num', rowspan: ['pass_name'], editor : new Ext.form.NumberField()},
+                    {header: 'user_name', width: 75,dataIndex: 'user_name'},
+                    {header: 'user_count', width: 75,dataIndex: 'user_count', editor : new Ext.form.NumberField()},
+                    {header: 'dedicated_line', width: 75,dataIndex: 'dedicated_line', rowspan: ['dedicated_line']},
+                    {header: 'dedicated_num', width: 75,dataIndex: 'dedicated_num', rowspan: ['dedicated_line'], editor : new Ext.form.NumberField()},
+                    {header: 'colnum7', width: 75,dataIndex: 'colnum7', rowspan: ['pass_name'], editor : new Ext.form.NumberField()},
+                    {header: 'colnum8', width: 75,dataIndex: 'colnum8', rowspan: ['pass_name'], editor : new Ext.form.NumberField()},
+                    {header: 'colnum9', width: 75,dataIndex: 'colnum9', rowspan: ['colnum9']},
+                    {header: 'colnum10', width: 75,dataIndex: 'colnum10', rowspan: ['colnum9'], editor : new Ext.form.NumberField()},
+                    {header: 'colnum11', width: 75,dataIndex: 'colnum11', rowspan: ['pass_name'], editor : new Ext.form.NumberField()},
+                    {header: 'colnum12', width: 75,dataIndex: 'colnum12', rowspan: ['pass_name'], editor : new Ext.form.NumberField()}
+                ],
+                stripeRows: true,
+                autoExpandColumn: 'pass_name',
+                title: 'Array Grid',
+                // config options for stateful behavior
+                stateful: true,
+                stateId: 'grid',
+                cls: 'rowspan-grid',//******必须配置此样式
+                view: Ext.create('Ext.ux.grid.RowspanView') //****使用view
+            });            
+            var win = new Ext.Window({
+                title:"行合并 demo",
+                width:600,
+                height:400,
+                resizable:false,
+                layout:'border',
+                items:grid
+            });
+            win.show();
+        });
+    //-->
+    </script>
+</head>
+<body></body>
+</html>
+<!-- <img alt="" src="http://my.csdn.net/uploads/201204/11/1334110262_4558.jpg"> -->
